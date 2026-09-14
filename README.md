@@ -1,6 +1,6 @@
 hello world
-'''python
+```python
 name = "miftah"
 print(name)
-'''
+```
 welcome
