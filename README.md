@@ -1,5 +1,5 @@
 hello world
-```python
+```bash
 name = "miftah"
 print(name)
 ```
