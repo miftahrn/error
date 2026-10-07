@@ -1,542 +1,412 @@
-# PrintManager
-## Sistem Informasi Manajemen Percetakan
+# PROJECT SISTEM INFORMASI AKUNTANSI
+## Studi Kasus: Sistem Informasi Akuntansi pada Perusahaan Percetakan
 
-## 1. Deskripsi Aplikasi
+> Catatan: semua data perusahaan, observasi, wawancara, dan dokumentasi
+> pada dokumen ini adalah data dummy dan wajib diganti dengan data nyata.
 
-PrintManager adalah aplikasi mobile berbasis Flutter untuk membantu mengelola kegiatan percetakan secara sederhana. Aplikasi ini dibuat sebagai proyek tugas kuliah dan menggunakan database lokal SQLite sehingga tidak membutuhkan backend atau server.
+---
 
-Aplikasi menyediakan fitur login, session pengguna, data anggota, komputasi percetakan, pengelolaan pesanan, konversi kalender, konversi umur, stopwatch, dan halaman bantuan.
+# DATA DASAR PERUSAHAAN
 
-Nama aplikasi: **PrintManager – Sistem Informasi Manajemen Percetakan**
+## 1. Identitas Perusahaan
 
-Platform utama: **Android**
+- Nama perusahaan: CV Cetak Maju (data dummy)
+- Bidang usaha: Percetakan / Offset Printing
+- Alamat: Jl. Merdeka No. 25, Kota Bandung (data dummy)
+- Tahun berdiri: 2018 (data dummy)
+- Skala usaha: Usaha kecil menengah (data dummy)
+- Jumlah karyawan: 12 orang (data dummy)
+- Pemilik/pimpinan: Budi Santoso (data dummy)
+- Jam operasional: Senin-Sabtu, 08.00-17.00 WIB (data dummy)
 
-Teknologi: **Flutter dan Dart**
+## 2. Gambaran Umum Perusahaan
 
-## 2. Tujuan Aplikasi
+CV Cetak Maju merupakan perusahaan yang bergerak di bidang percetakan,
+khususnya jasa percetakan offset dan produk cetak lainnya. Perusahaan
+melayani pesanan mulai dari penerimaan pesanan, penentuan kebutuhan
+produksi, penggunaan bahan baku, proses produksi, hingga penyerahan hasil
+cetak kepada pelanggan.
 
-Tujuan pembuatan aplikasi ini adalah:
+Sebagian proses pencatatan masih dilakukan secara manual sehingga terdapat
+kendala dalam pencatatan pelanggan, pesanan, produk, bahan, karyawan, dan
+transaksi. Sistem Informasi Akuntansi ini digunakan untuk menganalisis
+kebutuhan sistem yang membantu pengelolaan transaksi dan informasi akuntansi.
 
-1. Membuat aplikasi manajemen percetakan yang dapat digunakan secara lokal.
-2. Menerapkan login dan session menggunakan penyimpanan perangkat.
-3. Menerapkan database SQLite untuk menyimpan data anggota dan pesanan.
-4. Menerapkan operasi CRUD pada data pesanan.
-5. Menyediakan fitur perhitungan yang berkaitan dengan kegiatan percetakan.
-6. Menerapkan pemisahan source code berdasarkan fungsi agar lebih mudah dipelajari dan dipelihara.
+---
 
-## 3. Teknologi dan Dependency
+# 3. KONDISI SISTEM SAAT INI (AS-IS)
 
-Aplikasi dibuat menggunakan teknologi berikut:
+## 3.1 Penerimaan Pesanan
 
-- Flutter stable
-- Dart
-- Material Design 3
-- SQLite melalui package `sqflite`
-- Penyimpanan session melalui package `shared_preferences`
-- Format tanggal dan mata uang melalui package `intl`
-- Pengelolaan lokasi database melalui package `path`
+1. Pelanggan menghubungi atau datang ke perusahaan.
+2. Pelanggan menyampaikan kebutuhan cetak.
+3. Admin mencatat informasi pesanan.
+4. Admin menentukan produk atau jasa yang dipesan.
+5. Perusahaan mengecek bahan dan kemampuan produksi.
+6. Pesanan diteruskan ke bagian produksi.
+7. Produk diproses sampai selesai.
+8. Hasil cetak diserahkan kepada pelanggan.
+9. Pembayaran dicatat sesuai kondisi transaksi.
 
-Dependency utama pada `pubspec.yaml`:
+Masalah utama: pencatatan pesanan, pelanggan, dan pembayaran masih
+menggunakan buku catatan serta spreadsheet sederhana.
 
-```yaml
-intl: ^0.20.2
-shared_preferences: ^2.5.3
-sqflite: ^2.4.2
-path: ^1.9.1
-```
+### Dokumentasi
+- [FOTO 1 - Kegiatan penerimaan/administrasi pesanan]
+- [FOTO 2 - Kondisi tempat kerja bagian administrasi]
 
-## 4. Struktur Project
+## 3.2 Proses Produksi
 
-Struktur utama source code adalah sebagai berikut:
+1. Bagian produksi menerima informasi pesanan.
+2. Bagian produksi mengecek kebutuhan bahan.
+3. Bahan disiapkan.
+4. Proses produksi dilakukan.
+5. Hasil produksi diperiksa.
+6. Pesanan yang sesuai diserahkan kepada pelanggan.
+7. Jika terdapat masalah, dilakukan perbaikan atau produksi ulang.
 
-```text
-lib/
-├── main.dart
-├── database/
-│   └── database_helper.dart
-├── models/
-│   ├── member.dart
-│   └── order.dart
-├── services/
-│   ├── balinese_calendar_service.dart
-│   └── session_service.dart
-└── screens/
-    ├── age_page.dart
-    ├── calendar_page.dart
-    ├── computation_page.dart
-    ├── help_page.dart
-    ├── home_page.dart
-    ├── login_page.dart
-    ├── member_page.dart
-    ├── order_page.dart
-    └── stopwatch_page.dart
-```
+### Dokumentasi
+- [FOTO 3 - Aktivitas proses produksi]
+- [FOTO 4 - Mesin/peralatan percetakan]
 
-### Penjelasan folder
+## 3.3 Pengelolaan Bahan
 
-- `lib/main.dart`: entry point aplikasi, konfigurasi tema, dan pemeriksaan session.
-- `lib/database`: berisi helper untuk membuat dan mengakses database SQLite.
-- `lib/models`: berisi class model yang mewakili data anggota dan pesanan.
-- `lib/services`: berisi logika session dan konversi kalender Saka Bali.
-- `lib/screens`: berisi halaman-halaman yang ditampilkan kepada pengguna.
+1. Stok bahan diperiksa.
+2. Bahan yang tersedia digunakan untuk produksi.
+3. Jika tidak mencukupi, dilakukan pembelian.
+4. Bahan yang diterima dicatat.
+5. Bahan disimpan dan digunakan sesuai kebutuhan.
 
-## 5. Alur Kerja Aplikasi
+Pembaruan stok belum selalu dilakukan segera setelah bahan digunakan atau
+diterima dari pemasok.
 
-Alur utama aplikasi adalah:
+### Dokumentasi
+- [FOTO 5 - Gudang/tempat penyimpanan bahan]
+- [FOTO 6 - Contoh bahan baku percetakan]
 
-```text
-Aplikasi dibuka
-      |
-      v
-SessionGate memeriksa SharedPreferences
-      |
-      +-- Belum login --> LoginPage
-      |
-      +-- Sudah login --> HomePage
-                              |
-                              +-- Home
-                              +-- Stopwatch
-                              +-- Bantuan
-```
+---
 
-Setelah login, pengguna diarahkan ke halaman Home. Tombol Back tidak dapat digunakan untuk kembali ke halaman login karena halaman login diganti dengan `pushReplacement`. Ketika logout, seluruh stack navigasi dihapus menggunakan `pushAndRemoveUntil` sehingga pengguna kembali ke login dan tidak dapat kembali ke Home menggunakan tombol Back.
+# 4. TRANSAKSI / SIKLUS SIA
 
-## 6. Penjelasan Source Code Utama
+## 4.1 Siklus Pendapatan (Revenue Cycle)
 
-### 6.1 `main.dart`
+Pelanggan -> Pesanan -> Penjualan -> Piutang (jika ada) -> Pembayaran ->
+Penerimaan kas.
 
-File ini adalah titik awal aplikasi.
+Data yang dicatat meliputi pelanggan, pesanan, detail pesanan, harga, jumlah,
+total transaksi, status pembayaran, metode pembayaran, dan tanggal pembayaran.
 
-Fungsi utamanya:
+## 4.2 Siklus Pengeluaran (Expenditure Cycle)
 
-1. Memastikan Flutter siap digunakan melalui `WidgetsFlutterBinding.ensureInitialized()`.
-2. Menginisialisasi locale Indonesia untuk package `intl` melalui `initializeDateFormatting('id_ID')`.
-3. Menjalankan widget `PrintManagerApp`.
-4. Mengatur tema Material dengan warna biru tua, putih, dan abu-abu.
-5. Menampilkan `SessionGate` sebagai halaman awal.
+Kebutuhan bahan -> Pembelian bahan -> Penerimaan bahan -> Utang (jika kredit)
+-> Pembayaran kepada pemasok.
 
-`SessionGate` memakai `FutureBuilder` untuk memeriksa apakah pengguna sudah login. Jika session bernilai `true`, aplikasi membuka `HomePage`. Jika belum, aplikasi menampilkan `LoginPage`.
+Data yang dicatat meliputi pemasok, bahan, pembelian, detail pembelian,
+jumlah, harga, total pembelian, status pembayaran, dan tanggal pembayaran.
 
-### 6.2 `login_page.dart`
+---
 
-Halaman ini berisi:
+# 5. MASALAH SISTEM SAAT INI
 
-- Input username
-- Input password
-- Tombol Login
-- Tombol untuk menampilkan atau menyembunyikan password
-- Pesan kesalahan jika data login salah
+## Masalah 1 - Pencatatan masih manual
 
-Akun demo yang digunakan:
+Pencatatan dilakukan melalui buku dan spreadsheet dengan format yang belum
+seragam, sehingga admin perlu memeriksa beberapa sumber.
 
-```text
-Username: admin
-Password: admin123
-```
+Dampak: risiko kesalahan, data sulit dicari, dan waktu pencatatan lebih lama.
 
-Jika login berhasil, `SessionService.login()` menyimpan nilai session ke `SharedPreferences`.
+## Masalah 2 - Pemantauan status pesanan
 
-### 6.3 `session_service.dart`
+Status pesanan dikonfirmasi melalui komunikasi langsung antara admin dan
+produksi. Belum tersedia daftar status terpusat.
 
-Class `SessionService` menangani session login secara lokal.
+Dampak: posisi pesanan sulit diketahui dan risiko keterlambatan meningkat.
 
-Method yang tersedia:
+## Masalah 3 - Pengelolaan bahan baku
 
-- `isLoggedIn()`: membaca status login.
-- `login()`: menyimpan status login `true`.
-- `logout()`: menghapus status login.
+Stok kertas, tinta, dan bahan pendukung dicatat secara berkala, tetapi tidak
+selalu diperbarui saat bahan digunakan atau diterima.
 
-Contoh konsep penyimpanan session:
+Dampak: risiko kekurangan atau kelebihan stok dan gangguan produksi.
 
-```dart
-await preferences.setBool('is_logged_in', true);
-```
+## Masalah 4 - Pencatatan transaksi dan pembayaran
 
-Dengan cara ini, status login tetap tersimpan walaupun aplikasi ditutup dan dibuka kembali.
+Nota dan bukti pembayaran disimpan secara terpisah. Rekap transaksi dibuat
+secara manual pada akhir periode.
 
-### 6.4 `home_page.dart`
+Dampak: rekap membutuhkan waktu dan riwayat pembayaran sulit ditelusuri.
 
-`HomePage` menggunakan `NavigationBar` dengan tiga menu:
+---
 
-1. Home
-2. Stopwatch
-3. Bantuan
+# 6. DATA COLLECTION
 
-Pada halaman Home terdapat lima menu utama yang disusun secara vertikal:
+## 6.1 Observasi
 
-1. Daftar Anggota
-2. Komputasi Percetakan
-3. Data Pesanan
-4. Konversi Kalender
-5. Konversi Umur
+Aspek yang diamati:
 
-Setiap menu membuka halaman menggunakan `Navigator.push`.
+- [x] Penerimaan pesanan
+- [x] Pencatatan pelanggan
+- [x] Pencatatan transaksi
+- [x] Proses produksi
+- [x] Penggunaan bahan
+- [x] Pengadaan bahan
+- [x] Penerimaan bahan
+- [x] Pembayaran
+- [x] Penyimpanan dokumen
+- [x] Pelaporan
 
-### 6.5 `database_helper.dart`
+### Dokumentasi Observasi
+- [FOTO 7 - Kegiatan observasi]
+- [FOTO 8 - Aktivitas karyawan]
+- [FOTO 9 - Proses administrasi]
 
-`DatabaseHelper` adalah singleton yang digunakan untuk mengelola database SQLite.
+## 6.2 Wawancara
 
-Database yang dibuat bernama:
+Informan:
+- Nama: Rina Permata (data dummy)
+- Jabatan: Admin Operasional (data dummy)
+- Tanggal: 15 September 2026 (data dummy)
+- Lokasi: Kantor CV Cetak Maju (data dummy)
 
-```text
-print_manager.db
-```
+### Daftar Pertanyaan
 
-Database memiliki dua tabel utama.
+1. Bagaimana proses penerimaan pesanan pelanggan?
+2. Bagaimana data pelanggan dicatat?
+3. Bagaimana harga pesanan ditentukan?
+4. Bagaimana proses pembayaran pelanggan?
+5. Bagaimana transaksi penjualan dicatat?
+6. Bagaimana perusahaan mengetahui stok bahan?
+7. Bagaimana proses pembelian bahan?
+8. Bagaimana pembayaran kepada pemasok dilakukan?
+9. Bagaimana status pesanan dipantau?
+10. Laporan apa yang dibutuhkan pemilik?
 
-#### Tabel `members`
+### Hasil Wawancara
 
-| Kolom | Tipe | Keterangan |
+Pelanggan menyampaikan kebutuhan melalui WhatsApp atau datang langsung. Admin
+mencatat spesifikasi, menghitung estimasi harga, dan meneruskan detail kepada
+produksi. Pembayaran dilakukan melalui transfer atau tunai. Stok diperiksa
+sebelum produksi dan bahan dibeli jika persediaan tidak cukup. Pemilik
+membutuhkan laporan pesanan, penjualan, pembayaran, pembelian, dan stok.
+
+## 6.3 Dokumen yang Diamati
+
+Nota, invoice, bukti pembayaran, catatan pesanan, catatan pembelian, catatan
+stok, dokumen produksi, data pelanggan, dan data pemasok.
+
+---
+
+# 7. DOKUMENTASI LAPANGAN
+
+## Foto 1
+**Kegiatan:** Penerimaan pesanan pelanggan (data dummy)  
+**Lokasi:** Ruang administrasi (data dummy)  
+**Tanggal:** 15 September 2026 (data dummy)  
+**Keterangan:** Admin mencatat detail pesanan.  
+[MASUKKAN FOTO]
+
+## Foto 2
+**Kegiatan:** Proses produksi (data dummy)  
+**Lokasi:** Area produksi (data dummy)  
+**Tanggal:** 16 September 2026 (data dummy)  
+**Keterangan:** Operator menyiapkan bahan dan menjalankan mesin.  
+[MASUKKAN FOTO]
+
+## Foto 3
+**Kegiatan:** Pemeriksaan bahan baku (data dummy)  
+**Lokasi:** Gudang bahan (data dummy)  
+**Tanggal:** 16 September 2026 (data dummy)  
+**Keterangan:** Admin memeriksa jumlah kertas dan tinta.  
+[MASUKKAN FOTO]
+
+---
+
+# 8. DATA YANG DIPERLUKAN SISTEM
+
+## 8.1 Data Master
+
+### Pelanggan
+- id_pelanggan, nama_pelanggan, alamat, nomor_telepon, email
+
+### Produk/Jasa
+- id_produk, nama_produk, jenis, ukuran, harga
+
+### Bahan
+- id_bahan, nama_bahan, satuan, stok
+
+### Karyawan
+- id_karyawan, nama, jabatan, gaji
+
+### Pemasok
+- id_pemasok, nama_pemasok, alamat, nomor_telepon
+
+## 8.2 Data Transaksi
+
+### Pesanan
+- id_pesanan, id_pelanggan, tanggal_pesanan, status_pesanan
+
+### Detail Pesanan
+- id_detail_pesanan, id_pesanan, id_produk, jumlah, harga, subtotal
+
+### Pembayaran Pelanggan
+- id_pembayaran, id_pesanan, tanggal_pembayaran, jumlah_bayar, metode_pembayaran
+
+### Pembelian Bahan
+- id_pembelian, id_pemasok, tanggal_pembelian, status_pembelian
+
+### Detail Pembelian
+- id_detail_pembelian, id_pembelian, id_bahan, jumlah, harga, subtotal
+
+### Pembayaran Pemasok
+- id_pembayaran_pemasok, id_pembelian, jumlah_bayar, metode_pembayaran
+
+---
+
+# 9. RANCANGAN ENTITAS SIA
+
+Pelanggan, Pesanan, Detail_Pesanan, Produk, Bahan, Karyawan, Pemasok,
+Pembayaran_Pelanggan, Pembelian, Detail_Pembelian, dan Pembayaran_Pemasok.
+
+# 10. HUBUNGAN ANTAR ENTITAS
+
+- Pelanggan 1:N Pesanan
+- Pesanan 1:N Detail_Pesanan
+- Produk 1:N Detail_Pesanan
+- Pesanan 1:N Pembayaran_Pelanggan
+- Pemasok 1:N Pembelian
+- Pembelian 1:N Detail_Pembelian
+- Bahan 1:N Detail_Pembelian
+- Pembelian 1:N Pembayaran_Pemasok
+
+# 11. FUNCTIONAL REQUIREMENTS
+
+- **FR-01:** Sistem dapat menyimpan data pelanggan.
+- **FR-02:** Sistem dapat mencatat pesanan dan detail pesanan.
+- **FR-03:** Sistem dapat mencatat pembayaran pelanggan.
+- **FR-04:** Sistem dapat mencatat data bahan.
+- **FR-05:** Sistem dapat mencatat pembelian bahan.
+- **FR-06:** Sistem dapat mencatat pembayaran kepada pemasok.
+- **FR-07:** Sistem dapat memperbarui stok bahan.
+- **FR-08:** Sistem dapat menghasilkan laporan transaksi.
+
+# 12. NON-FUNCTIONAL REQUIREMENTS
+
+- **NFR-01 Security:** Login berdasarkan hak akses pengguna.
+- **NFR-02 Performance:** Data transaksi ditampilkan dalam waktu wajar.
+- **NFR-03 Usability:** Antarmuka mudah digunakan admin dan perusahaan.
+- **NFR-04 Data Integrity:** Data wajib harus lengkap sebelum disimpan.
+- **NFR-05 Audit Trail:** Perubahan transaksi penting dapat ditelusuri.
+
+# 13. USER STORIES
+
+- **US-01:** Sebagai admin, saya ingin mencatat pelanggan agar datanya dapat digunakan kembali.
+- **US-02:** Sebagai admin, saya ingin mencatat pesanan agar transaksi terdokumentasi.
+- **US-03:** Sebagai admin, saya ingin mencatat pembayaran agar status pembayaran diketahui.
+- **US-04:** Sebagai bagian pembelian, saya ingin mencatat pembelian bahan.
+- **US-05:** Sebagai pemilik, saya ingin melihat laporan transaksi.
+
+# 14. MOSCOW PRIORITIZATION
+
+| ID | Requirement | Prioritas |
 |---|---|---|
-| `id` | INTEGER | Primary key dan auto increment |
-| `name` | TEXT | Nama anggota |
-| `nim` | TEXT | Nomor induk mahasiswa |
-| `role` | TEXT | Peran anggota |
+| FR-01 | Data pelanggan | Must |
+| FR-02 | Pesanan | Must |
+| FR-03 | Pembayaran pelanggan | Must |
+| FR-04 | Data bahan | Must |
+| FR-05 | Pembelian bahan | Must |
+| FR-06 | Pembayaran pemasok | Must |
+| FR-07 | Stok bahan | Must |
+| FR-08 | Laporan | Should |
 
-Saat database pertama kali dibuat, data anggota berikut dimasukkan:
+# 15. NORMALISASI
 
-```text
-Nama: Miftah Rafli Nuryatama
-NIM: 124230098
-Role: Mahasiswa
+## Tabel Awal
+
+Contoh data belum ternormalisasi: satu baris memuat pelanggan, pesanan,
+beberapa produk, bahan, dan pembayaran sekaligus.
+
+## 1NF
+
+Setiap kolom berisi satu nilai dan setiap detail produk dibuat sebagai baris
+terpisah pada tabel Detail_Pesanan.
+
+## 2NF
+
+Data pelanggan dan produk dipisahkan dari detail pesanan agar tidak bergantung
+sebagian pada kunci gabungan.
+
+## 3NF
+
+Data pemasok, bahan, pembayaran, dan pesanan dipisahkan sehingga tidak ada
+ketergantungan transitif.
+
+# 16. DATABASE DESIGN
+
+```sql
+CREATE TABLE pelanggan (
+    id_pelanggan INT PRIMARY KEY,
+    nama_pelanggan VARCHAR(100) NOT NULL,
+    alamat TEXT,
+    nomor_telepon VARCHAR(20),
+    email VARCHAR(100)
+);
 ```
 
-#### Tabel `orders`
+---
 
-| Kolom | Tipe | Keterangan |
+# 17. DATA DICTIONARY
+
+| Tabel | Field | Tipe Data | Key | Keterangan |
+|---|---|---|---|---|
+| pelanggan | id_pelanggan | INT | PK | ID pelanggan |
+| pelanggan | nama_pelanggan | VARCHAR(100) | - | Nama pelanggan |
+| pesanan | id_pesanan | INT | PK | ID pesanan |
+| pesanan | id_pelanggan | INT | FK | Relasi ke pelanggan |
+| pesanan | tanggal_pesanan | DATE | - | Tanggal pesanan |
+| pesanan | status_pesanan | VARCHAR(30) | - | Status pesanan |
+| pembayaran_pelanggan | id_pembayaran | INT | PK | ID pembayaran |
+| pembayaran_pelanggan | id_pesanan | INT | FK | Relasi ke pesanan |
+
+Data dictionary ini masih berupa contoh awal dan akan dilengkapi setelah ERD
+final disepakati.
+
+# 18. TRACEABILITY MATRIX
+
+| Requirement | Sumber | Entitas/Tabel |
 |---|---|---|
-| `id` | INTEGER | Primary key dan auto increment |
-| `customer_name` | TEXT | Nama pelanggan |
-| `print_type` | TEXT | Jenis cetakan |
-| `paper_size` | TEXT | Ukuran kertas |
-| `quantity` | INTEGER | Jumlah cetakan |
-| `price_per_sheet` | REAL | Harga per lembar |
-| `total_price` | REAL | Total harga |
-| `status` | TEXT | Status pesanan |
-
-Method database yang digunakan:
-
-- `getMembers()`: mengambil seluruh data anggota.
-- `getOrders()`: mengambil seluruh pesanan.
-- `insertOrder()`: menambahkan pesanan.
-- `updateOrder()`: memperbarui pesanan.
-- `deleteOrder()`: menghapus pesanan.
-
-### 6.6 `member.dart` dan `member_page.dart`
-
-`Member` adalah model untuk data anggota. Data dari SQLite diubah menjadi object menggunakan factory constructor `Member.fromMap`.
-
-`MemberPage` mengambil data menggunakan `FutureBuilder`, kemudian menampilkannya dalam bentuk `ListView` dan `Card`.
-
-Keuntungan menggunakan model adalah data lebih terstruktur dibandingkan menggunakan `Map` secara langsung pada seluruh halaman.
-
-### 6.7 `order.dart` dan `order_page.dart`
-
-`PrintOrder` adalah model untuk data pesanan.
-
-Total harga dihitung melalui getter:
-
-```dart
-double get totalPrice => quantity * pricePerSheet;
-```
-
-`OrderPage` menyediakan fitur CRUD lengkap:
-
-- Create: tombol `Tambah` membuka form pesanan.
-- Read: daftar pesanan diambil dari SQLite.
-- Update: menu `Edit` mengubah data pesanan.
-- Delete: menu `Hapus` menghapus data setelah konfirmasi.
-
-Jenis cetakan yang tersedia:
-
-- Dokumen
-- Brosur
-- Poster
-- Undangan
-- Banner
-- Kartu nama
-
-Ukuran kertas yang tersedia:
-
-- A4
-- A3
-- F4
-- B5
-
-Status pesanan yang tersedia:
-
-- Menunggu
-- Diproses
-- Selesai
-
-Sebelum disimpan, form melakukan validasi agar nama pelanggan, jumlah, dan harga tidak kosong atau tidak valid.
-
-### 6.8 `computation_page.dart`
-
-Halaman Komputasi Percetakan memiliki tiga fitur.
-
-#### Kalkulator
-
-Kalkulator mendukung:
-
-- Penjumlahan
-- Pengurangan
-- Perkalian
-- Pembagian
-- Bilangan desimal menggunakan titik
-- Bilangan negatif melalui tombol `+/-`
-- Tombol `C`
-- Tombol `=`
-- Persentase
-
-Nilai kalkulator menggunakan tipe `double`, sehingga contoh berikut dapat dilakukan:
-
-```text
-5.5 + 2.5 = 8
-10 / 4 = 2.5
-(-70) - (-40) = -30
-```
-
-#### Ganjil dan Genap
-
-Fitur ini menggunakan operasi modulus:
-
-```dart
-number % 2 == 0
-```
-
-Jika hasil modulus sama dengan nol, bilangan dinyatakan genap. Jika tidak, bilangan dinyatakan ganjil.
-
-#### Jumlah Digit
-
-Fitur ini menghitung banyaknya digit, bukan menjumlahkan nilai digit.
-
-Contoh:
-
-```text
-12345   -> Jumlah angka: 5
-1457294 -> Jumlah angka: 7
-10      -> Jumlah angka: 2
-7       -> Jumlah angka: 1
-```
-
-Tanda minus pada bilangan negatif dihapus terlebih dahulu sehingga hanya digit yang dihitung.
-
-### 6.9 `calendar_page.dart`
-
-Halaman Konversi Kalender menerima tanggal Masehi melalui `showDatePicker`.
-
-Hasil yang ditampilkan:
-
-- Tanggal Hijriah perkiraan
-- Nama hari
-- Pasaran atau weton
-- Tahun Saka Bali
-- Tanggal Nyepi sebagai awal tahun Saka
-- Hari keberapa dalam tahun Saka
-- Sasih perkiraan
-
-Konversi Hijriah pada source code masih menggunakan pendekatan pengurangan jumlah hari tetap, sehingga hasilnya diberi label `perkiraan`.
-
-Perhitungan weton menggunakan daftar pasaran:
-
-```dart
-['Legi', 'Pahing', 'Pon', 'Wage', 'Kliwon']
-```
-
-### 6.10 `balinese_calendar_service.dart`
-
-Service ini berisi logika kalender Saka Bali.
-
-Data Nyepi modern tahun 2020 sampai 2030 disimpan dalam `Map<int, DateTime>`. Tahun Saka ditentukan dari tahun Nyepi:
-
-```text
-Tahun Saka = Tahun Masehi Nyepi - 78
-```
-
-Contoh:
-
-```text
-Nyepi 2026 -> Tahun Saka 1948
-```
-
-Service juga menghitung:
-
-- Awal tahun Saka berdasarkan tanggal Nyepi.
-- Hari keberapa sejak Nyepi.
-- Sasih menggunakan pembagian pendekatan 30 hari.
-
-Perlu diperhatikan bahwa penentuan sasih pada aplikasi masih berupa pendekatan. Kalender Bali sebenarnya menggunakan perhitungan pawukon dan sistem lunar-solar yang lebih kompleks. Struktur service sengaja dibuat terpisah agar dapat dikembangkan kemudian tanpa mengubah tampilan halaman kalender.
-
-### 6.11 `age_page.dart`
-
-Halaman Konversi Umur menerima tanggal lahir dari date picker.
-
-Hasil perhitungan ditampilkan dalam:
-
-- Tahun
-- Bulan
-- Hari
-- Jam
-- Menit
-- Detik
-
-`Timer.periodic` digunakan setiap satu detik agar informasi waktu terus diperbarui.
-
-### 6.12 `stopwatch_page.dart`
-
-Stopwatch menggunakan `Timer.periodic` dengan interval satu detik.
-
-Tombol yang disediakan:
-
-- `Start`: memulai timer.
-- `Pause`: menghentikan sementara timer.
-- `Reset`: mengembalikan waktu ke nol.
-
-Timer dibatalkan pada method `dispose()` untuk mencegah timer tetap berjalan ketika halaman sudah ditutup.
-
-### 6.13 `help_page.dart`
-
-Halaman Bantuan menampilkan panduan singkat untuk:
-
-- Login
-- Komputasi
-- CRUD pesanan
-- Konversi kalender
-- Konversi umur
-- Stopwatch
-
-Tombol Logout tersedia pada tab Bantuan. Logout menghapus session dan mengarahkan pengguna kembali ke halaman Login.
-
-## 7. Desain Antarmuka
-
-Aplikasi menggunakan Material Design dengan karakteristik:
-
-- Warna utama biru tua.
-- Latar belakang abu-abu muda.
-- Card untuk menampilkan menu dan data.
-- Icon untuk membantu mengenali fungsi menu.
-- NavigationBar untuk navigasi utama.
-- Form dengan validasi input.
-- Layout yang dapat digunakan pada layar Android.
-
-Tema global ditetapkan di `main.dart`, sehingga warna dan gaya dasar dapat digunakan oleh seluruh halaman.
-
-## 8. Cara Menjalankan Project
-
-### Persyaratan
-
-Pastikan perangkat sudah memiliki:
-
-- Flutter stable
-- Dart SDK yang sesuai dengan versi Flutter
-- Android Studio atau Android SDK
-- Emulator Android atau perangkat Android fisik
-- VS Code atau IDE lain yang mendukung Flutter
-
-### Langkah menjalankan
-
-Masuk ke folder project:
-
-```bash
-cd print_manager
-```
-
-Ambil dependency:
-
-```bash
-flutter pub get
-```
-
-Periksa perangkat yang tersedia:
-
-```bash
-flutter devices
-```
-
-Jalankan aplikasi:
-
-```bash
-flutter run
-```
-
-Untuk menjalankan pada Android dalam mode debug:
-
-```bash
-flutter run -d <device_id>
-```
-
-## 9. Cara Login
-
-Gunakan akun demo berikut:
-
-```text
-Username: admin
-Password: admin123
-```
-
-Setelah login berhasil, session disimpan secara lokal. Saat aplikasi dibuka kembali, pengguna langsung diarahkan ke Home selama session belum dihapus.
-
-## 10. Pengujian dan Validasi
-
-Widget test tersedia pada:
-
-```text
-test/widget_test.dart
-```
-
-Perintah untuk menjalankan test:
-
-```bash
-flutter test
-```
-
-Perintah untuk memeriksa kode:
-
-```bash
-flutter analyze
-```
-
-Perintah untuk membuat APK Android:
-
-```bash
-flutter build apk --debug
-```
-
-Hasil APK debug berada di:
-
-```text
-build/app/outputs/flutter-apk/app-debug.apk
-```
-
-Widget test login telah berhasil dijalankan dan build APK Android berhasil dibuat. Analyzer masih dapat menampilkan beberapa informasi lint terkait gaya penulisan satu baris dan penggunaan API `DropdownButtonFormField.value` yang deprecated pada versi Flutter terbaru, tetapi tidak menghalangi proses build aplikasi.
-
-## 11. Kelebihan Aplikasi
-
-1. Tidak membutuhkan server atau koneksi backend.
-2. Data pesanan tersimpan di database lokal.
-3. Struktur file dipisahkan berdasarkan tanggung jawab.
-4. Memiliki CRUD pesanan lengkap.
-5. Memiliki login dan session.
-6. Memiliki beberapa fitur komputasi yang relevan dengan tugas.
-7. Source code masih sederhana dan mudah dipelajari mahasiswa pemula.
-
-## 12. Keterbatasan dan Pengembangan Berikutnya
-
-Beberapa bagian masih dapat dikembangkan lebih lanjut:
-
-1. Login masih menggunakan akun demo tetap dan belum memiliki tabel pengguna.
-2. Konversi Hijriah masih berupa pendekatan, bukan perhitungan astronomi atau library kalender Hijriah penuh.
-3. Perhitungan Sasih Bali masih menggunakan pendekatan pembagian 30 hari.
-4. Data Nyepi yang tersedia pada service saat ini berfokus pada tahun modern 2020 sampai 2030.
-5. Weton yang ditampilkan baru menggunakan pasaran dasar dan belum menghitung siklus wuku secara lengkap.
-6. Belum tersedia fitur pencarian dan filter pesanan.
-7. Belum tersedia laporan atau export data ke PDF.
-8. Belum tersedia backup dan restore database.
-9. Belum terdapat manajemen banyak pengguna atau role pengguna.
-
-## 13. Kesimpulan
-
-PrintManager berhasil dibuat sebagai aplikasi mobile sederhana untuk mendukung pengelolaan percetakan. Aplikasi telah menerapkan Flutter, Dart, Material Design, SQLite, SharedPreferences, model data, service, navigasi, session, CRUD, serta beberapa fitur perhitungan dan konversi kalender.
-
-Pemisahan source code ke dalam folder `models`, `database`, `services`, dan `screens` membuat aplikasi lebih mudah dibaca, diuji, dan dikembangkan. Aplikasi ini dapat menjadi dasar untuk pengembangan sistem manajemen percetakan yang lebih lengkap, seperti laporan transaksi, pencarian pesanan, autentikasi pengguna, dan perhitungan kalender yang lebih akurat.
+| FR-01 | Wawancara admin (dummy) | Pelanggan |
+| FR-02 | Observasi pesanan (dummy) | Pesanan, Detail_Pesanan |
+| FR-03 | Wawancara admin (dummy) | Pembayaran_Pelanggan |
+| FR-04 | Observasi gudang (dummy) | Bahan |
+| FR-05 | Observasi pengadaan (dummy) | Pembelian, Detail_Pembelian |
+| FR-06 | Wawancara pemilik (dummy) | Pembayaran_Pemasok |
+
+# 19. TRIANGULASI
+
+**Observasi:** Pencatatan pesanan dan stok masih dilakukan secara manual.  
+**Wawancara:** Admin membutuhkan pencatatan terpusat dan laporan berkala.  
+**Dokumen:** Nota dan catatan stok menjadi bukti utama transaksi (dummy).  
+**Kesimpulan:** Ketiga sumber menunjukkan kebutuhan sistem terintegrasi.
+
+**Prosedur tertulis:** Setiap pesanan dan perubahan stok dicatat pada dokumen.  
+**Praktik sebenarnya:** Sebagian informasi disampaikan melalui chat dan direkap kemudian.  
+**Perbedaan:** Pencatatan aktual tidak selalu dilakukan saat transaksi.  
+**Dampak:** Informasi dapat terlambat dan tidak sinkron.
+
+# 20. DOKUMENTASI PENDUKUNG
+
+Daftar bukti dummy: foto kegiatan KP, foto administrasi, foto produksi, foto
+mesin, foto bahan, foto dokumen transaksi, foto nota/invoice, foto lingkungan
+perusahaan, hasil wawancara, dan hasil observasi.
+
+Foto atau dokumen yang mengandung data sensitif akan disensor sebelum dimasukkan
+ke laporan.
+
+# 21. STRUKTUR LAPORAN UTS
+
+- **BAB I - Profil dan Analisis Masalah:** profil, struktur, proses bisnis, siklus, masalah, tujuan, dan ruang lingkup.
+- **BAB II - Pengumpulan Data:** metode, wawancara, observasi, studi dokumen, hasil, dan triangulasi.
+- **BAB III - SRS:** functional requirements, non-functional requirements, MoSCoW, user stories, traceability, konflik, dan verifikasi.
+- **BAB IV - Perancangan Basis Data:** kebutuhan data, ERD, relasi, skema, normalisasi, DDL, sample data, dan data dictionary.
+- **BAB V - Progres dan Rencana Tahap 2:** progres, kontribusi, pengembangan, pembagian tugas, teknologi, dan refleksi.
+- **LAMPIRAN:** dokumentasi foto, bukti wawancara, dokumen, DDL SQL, pengujian, log progres, kontribusi, dan deklarasi penggunaan AI.
