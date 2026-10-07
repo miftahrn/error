@@ -1,14 +1,47 @@
+# HALAMAN AWAL
+
+## COVER
+
 # PROJECT SISTEM INFORMASI AKUNTANSI
 ## Studi Kasus: Sistem Informasi Akuntansi pada Perusahaan Percetakan
+
+**Nama perusahaan:** CV Cetak Maju  
+**Nama dan NIM anggota:**
+
+| No. | Nama | NIM |
+|---|---|---|
+| 1 | [isi nama] | [isi NIM] |
+| 2 | [isi nama] | [isi NIM] |
+| 3 | [isi nama] | [isi NIM] |
+| 4 | [isi nama] | [isi NIM] |
+
+## LEMBAR PERNYATAAN ORISINALITAS
+
+Kami menyatakan bahwa laporan progres Tahap 1 ini disusun secara orisinal
+oleh anggota kelompok. Setiap sumber dan bantuan yang digunakan telah
+dinyatakan secara jujur dalam laporan. Penggunaan AI hanya sebagai alat bantu
+penyusunan dan tetap diverifikasi oleh anggota kelompok.
+
+Tempat, tanggal: [isi]  
+Ketua kelompok: [isi nama dan tanda tangan]
+
+## DAFTAR ISI
+
+1. BAB I Pendahuluan  
+2. BAB II Metode Pengumpulan Data  
+3. BAB III Spesifikasi Kebutuhan (SRS)  
+4. BAB IV Perancangan Basis Data  
+5. BAB V Progres dan Rencana Tahap 2  
+6. Lampiran
 
 > Catatan: data pemilik dan karyawan berikut berasal dari informasi yang
 > diberikan pengguna. Bagian bertanda data dummy masih perlu dikonfirmasi.
 
 ---
 
-# DATA DASAR PERUSAHAAN
+# BAB I PENDAHULUAN
 
-## 1. Identitas Perusahaan
+## 1.1 Identitas Perusahaan
 
 - Nama perusahaan: CV Cetak Maju (nama usaha perlu dikonfirmasi)
 - Bidang usaha: Percetakan / Offset Printing
@@ -19,7 +52,7 @@
 - Pemilik/pimpinan: Evi Indrawati, selaku pemilik dan owner
 - Jam operasional: Senin-Sabtu, 08.00-17.00 WIB (data dummy)
 
-## 2. Gambaran Umum Perusahaan
+## 1.2 Gambaran Umum Perusahaan
 
 CV Cetak Maju merupakan perusahaan yang bergerak di bidang percetakan,
 khususnya jasa percetakan offset dan produk cetak lainnya. Perusahaan
@@ -32,7 +65,7 @@ kendala dalam pencatatan pelanggan, pesanan, produk, bahan, karyawan, dan
 transaksi. Sistem Informasi Akuntansi ini digunakan untuk menganalisis
 kebutuhan sistem yang membantu pengelolaan transaksi dan informasi akuntansi.
 
-## 2.1 Struktur Organisasi dan Peran
+## 1.3 Struktur Organisasi dan Peran
 
 | Peran | Nama | Tanggung Jawab |
 |---|---|---|
@@ -41,7 +74,7 @@ kebutuhan sistem yang membantu pengelolaan transaksi dan informasi akuntansi.
 | Operator mesin cetak | Rukun | Menyiapkan bahan dan menjalankan proses pencetakan |
 | Finishing | Atin | Memeriksa, merapikan, dan menyelesaikan hasil cetak |
 
-## 2.2 Tujuan dan Ruang Lingkup SIA
+## 1.4 Tujuan dan Ruang Lingkup SIA
 
 Tujuan sistem adalah memusatkan pencatatan pelanggan, pesanan, produksi,
 stok bahan, pembelian, dan pembayaran sehingga informasi lebih mudah dicari
@@ -55,9 +88,9 @@ penjualan melalui marketplace.
 
 ---
 
-# 3. KONDISI SISTEM SAAT INI (AS-IS)
+## 1.5 Kondisi Sistem Saat Ini (As-Is)
 
-## 3.1 Penerimaan Pesanan
+## 1.5.1 Penerimaan Pesanan
 
 1. Pelanggan menghubungi atau datang ke perusahaan.
 2. Pelanggan menyampaikan kebutuhan cetak.
@@ -76,7 +109,7 @@ menggunakan buku catatan serta spreadsheet sederhana.
 - [FOTO 1 - Kegiatan penerimaan/administrasi pesanan]
 - [FOTO 2 - Kondisi tempat kerja bagian administrasi]
 
-## 3.2 Proses Produksi
+## 1.5.2 Proses Produksi
 
 1. Bagian produksi menerima informasi pesanan.
 2. Bagian produksi mengecek kebutuhan bahan.
@@ -90,7 +123,7 @@ menggunakan buku catatan serta spreadsheet sederhana.
 - [FOTO 3 - Aktivitas proses produksi]
 - [FOTO 4 - Mesin/peralatan percetakan]
 
-## 3.3 Pengelolaan Bahan
+## 1.5.3 Pengelolaan Bahan
 
 1. Stok bahan diperiksa.
 2. Bahan yang tersedia digunakan untuk produksi.
@@ -107,9 +140,9 @@ diterima dari pemasok.
 
 ---
 
-# 4. TRANSAKSI / SIKLUS SIA
+## 1.6 Transaksi / Siklus SIA
 
-## 4.1 Siklus Pendapatan (Revenue Cycle)
+## 1.6.1 Siklus Pendapatan (Revenue Cycle)
 
 Pelanggan -> Pesanan -> Penjualan -> Piutang (jika ada) -> Pembayaran ->
 Penerimaan kas.
@@ -117,7 +150,7 @@ Penerimaan kas.
 Data yang dicatat meliputi pelanggan, pesanan, detail pesanan, harga, jumlah,
 total transaksi, status pembayaran, metode pembayaran, dan tanggal pembayaran.
 
-## 4.2 Siklus Pengeluaran (Expenditure Cycle)
+## 1.6.2 Siklus Pengeluaran (Expenditure Cycle)
 
 Kebutuhan bahan -> Pembelian bahan -> Penerimaan bahan -> Utang (jika kredit)
 -> Pembayaran kepada pemasok.
@@ -127,30 +160,30 @@ jumlah, harga, total pembelian, status pembayaran, dan tanggal pembayaran.
 
 ---
 
-# 5. MASALAH SISTEM SAAT INI
+## 1.7 Masalah Sistem Saat Ini
 
-## Masalah 1 - Pencatatan masih manual
+## 1.7.1 Pencatatan Masih Manual
 
 Pencatatan dilakukan melalui buku dan spreadsheet dengan format yang belum
 seragam, sehingga admin perlu memeriksa beberapa sumber.
 
 Dampak: risiko kesalahan, data sulit dicari, dan waktu pencatatan lebih lama.
 
-## Masalah 2 - Pemantauan status pesanan
+## 1.7.2 Pemantauan Status Pesanan
 
 Status pesanan dikonfirmasi melalui komunikasi langsung antara admin dan
 produksi. Belum tersedia daftar status terpusat.
 
 Dampak: posisi pesanan sulit diketahui dan risiko keterlambatan meningkat.
 
-## Masalah 3 - Pengelolaan bahan baku
+## 1.7.3 Pengelolaan Bahan Baku
 
 Stok kertas, tinta, dan bahan pendukung dicatat secara berkala, tetapi tidak
 selalu diperbarui saat bahan digunakan atau diterima.
 
 Dampak: risiko kekurangan atau kelebihan stok dan gangguan produksi.
 
-## Masalah 4 - Pencatatan transaksi dan pembayaran
+## 1.7.4 Pencatatan Transaksi dan Pembayaran
 
 Nota dan bukti pembayaran disimpan secara terpisah. Rekap transaksi dibuat
 secara manual pada akhir periode.
@@ -159,9 +192,9 @@ Dampak: rekap membutuhkan waktu dan riwayat pembayaran sulit ditelusuri.
 
 ---
 
-# 6. DATA COLLECTION
+# BAB II METODE PENGUMPULAN DATA
 
-## 6.1 Observasi
+## 2.1 Observasi
 
 Aspek yang diamati:
 
@@ -181,7 +214,7 @@ Aspek yang diamati:
 - [FOTO 8 - Aktivitas karyawan]
 - [FOTO 9 - Proses administrasi]
 
-## 6.2 Wawancara
+## 2.2 Wawancara
 
 Informan:
 - Nama: Rina
@@ -212,30 +245,30 @@ produksi. Pembayaran dilakukan melalui transfer atau tunai. Stok diperiksa
 sebelum produksi dan bahan dibeli jika persediaan tidak cukup. Pemilik
 membutuhkan laporan pesanan, penjualan, pembayaran, pembelian, dan stok.
 
-## 6.3 Dokumen yang Diamati
+## 2.3 Dokumen yang Diamati
 
 Nota, invoice, bukti pembayaran, catatan pesanan, catatan pembelian, catatan
 stok, dokumen produksi, data pelanggan, dan data pemasok.
 
 ---
 
-# 7. DOKUMENTASI LAPANGAN
+## 2.4 Dokumentasi Lapangan
 
-## Foto 1
+### Foto 1
 **Kegiatan:** Penerimaan pesanan pelanggan (data dummy)  
 **Lokasi:** Ruang administrasi (data dummy)  
 **Tanggal:** 15 September 2026 (data dummy)  
 **Keterangan:** Admin mencatat detail pesanan.  
 [MASUKKAN FOTO]
 
-## Foto 2
+### Foto 2
 **Kegiatan:** Proses produksi (data dummy)  
 **Lokasi:** Area produksi (data dummy)  
 **Tanggal:** 16 September 2026 (data dummy)  
 **Keterangan:** Operator menyiapkan bahan dan menjalankan mesin.  
 [MASUKKAN FOTO]
 
-## Foto 3
+### Foto 3
 **Kegiatan:** Pemeriksaan bahan baku (data dummy)  
 **Lokasi:** Gudang bahan (data dummy)  
 **Tanggal:** 16 September 2026 (data dummy)  
@@ -244,53 +277,55 @@ stok, dokumen produksi, data pelanggan, dan data pemasok.
 
 ---
 
-# 8. DATA YANG DIPERLUKAN SISTEM
+# BAB III SPESIFIKASI KEBUTUHAN (SRS)
 
-## 8.1 Data Master
+## 3.1 Data yang Diperlukan Sistem
 
-### Pelanggan
+### 3.1.1 Data Master
+
+#### Pelanggan
 - id_pelanggan, nama_pelanggan, alamat, nomor_telepon, email
 
-### Produk/Jasa
+#### Produk/Jasa
 - id_produk, nama_produk, jenis, ukuran, harga
 
-### Bahan
+#### Bahan
 - id_bahan, nama_bahan, satuan, stok
 
-### Karyawan
+#### Karyawan
 - id_karyawan, nama, jabatan, gaji
 
 ### Pemasok
 - id_pemasok, nama_pemasok, alamat, nomor_telepon
 
-## 8.2 Data Transaksi
+### 3.1.2 Data Transaksi
 
-### Pesanan
+#### Pesanan
 - id_pesanan, id_pelanggan, tanggal_pesanan, status_pesanan
 
-### Detail Pesanan
+#### Detail Pesanan
 - id_detail_pesanan, id_pesanan, id_produk, jumlah, harga, subtotal
 
-### Pembayaran Pelanggan
+#### Pembayaran Pelanggan
 - id_pembayaran, id_pesanan, tanggal_pembayaran, jumlah_bayar, metode_pembayaran
 
-### Pembelian Bahan
+#### Pembelian Bahan
 - id_pembelian, id_pemasok, tanggal_pembelian, status_pembelian
 
-### Detail Pembelian
+#### Detail Pembelian
 - id_detail_pembelian, id_pembelian, id_bahan, jumlah, harga, subtotal
 
-### Pembayaran Pemasok
+#### Pembayaran Pemasok
 - id_pembayaran_pemasok, id_pembelian, jumlah_bayar, metode_pembayaran
 
 ---
 
-# 9. RANCANGAN ENTITAS SIA
+## 3.2 Rancangan Entitas SIA
 
 Pelanggan, Pesanan, Detail_Pesanan, Produk, Bahan, Karyawan, Pemasok,
 Pembayaran_Pelanggan, Pembelian, Detail_Pembelian, dan Pembayaran_Pemasok.
 
-# 10. HUBUNGAN ANTAR ENTITAS
+## 3.3 Hubungan Antar Entitas
 
 - Pelanggan 1:N Pesanan
 - Pesanan 1:N Detail_Pesanan
@@ -301,7 +336,7 @@ Pembayaran_Pelanggan, Pembelian, Detail_Pembelian, dan Pembayaran_Pemasok.
 - Bahan 1:N Detail_Pembelian
 - Pembelian 1:N Pembayaran_Pemasok
 
-# 11. FUNCTIONAL REQUIREMENTS
+## 3.4 Kebutuhan Fungsional
 
 - **FR-01:** Sistem dapat menyimpan data pelanggan.
 - **FR-02:** Sistem dapat mencatat pesanan dan detail pesanan.
@@ -312,7 +347,7 @@ Pembayaran_Pelanggan, Pembelian, Detail_Pembelian, dan Pembayaran_Pemasok.
 - **FR-07:** Sistem dapat memperbarui stok bahan.
 - **FR-08:** Sistem dapat menghasilkan laporan transaksi.
 
-# 12. NON-FUNCTIONAL REQUIREMENTS
+## 3.5 Kebutuhan Non-Fungsional
 
 - **NFR-01 Security:** Login berdasarkan hak akses pengguna.
 - **NFR-02 Performance:** Data transaksi ditampilkan dalam waktu wajar.
@@ -320,7 +355,7 @@ Pembayaran_Pelanggan, Pembelian, Detail_Pembelian, dan Pembayaran_Pemasok.
 - **NFR-04 Data Integrity:** Data wajib harus lengkap sebelum disimpan.
 - **NFR-05 Audit Trail:** Perubahan transaksi penting dapat ditelusuri.
 
-# 13. USER STORIES
+## 3.6 User Stories
 
 - **US-01:** Sebagai admin, saya ingin mencatat pelanggan agar datanya dapat digunakan kembali.
 - **US-02:** Sebagai admin, saya ingin mencatat pesanan agar transaksi terdokumentasi.
@@ -328,7 +363,7 @@ Pembayaran_Pelanggan, Pembelian, Detail_Pembelian, dan Pembayaran_Pemasok.
 - **US-04:** Sebagai bagian pembelian, saya ingin mencatat pembelian bahan.
 - **US-05:** Sebagai pemilik, saya ingin melihat laporan transaksi.
 
-# 14. MOSCOW PRIORITIZATION
+## 3.7 MoSCoW Prioritization
 
 | ID | Requirement | Prioritas |
 |---|---|---|
@@ -341,29 +376,31 @@ Pembayaran_Pelanggan, Pembelian, Detail_Pembelian, dan Pembayaran_Pemasok.
 | FR-07 | Stok bahan | Must |
 | FR-08 | Laporan | Should |
 
-# 15. NORMALISASI
+# BAB IV PERANCANGAN BASIS DATA
 
-## Tabel Awal
+## 4.1 Normalisasi
+
+### Tabel Awal
 
 Contoh data belum ternormalisasi: satu baris memuat pelanggan, pesanan,
 beberapa produk, bahan, dan pembayaran sekaligus.
 
-## 1NF
+### 1NF
 
 Setiap kolom berisi satu nilai dan setiap detail produk dibuat sebagai baris
 terpisah pada tabel Detail_Pesanan.
 
-## 2NF
+### 2NF
 
 Data pelanggan dan produk dipisahkan dari detail pesanan agar tidak bergantung
 sebagian pada kunci gabungan.
 
-## 3NF
+### 3NF
 
 Data pemasok, bahan, pembayaran, dan pesanan dipisahkan sehingga tidak ada
 ketergantungan transitif.
 
-# 16. DATABASE DESIGN
+## 4.2 Database Design
 
 ```sql
 CREATE TABLE pelanggan (
@@ -377,7 +414,7 @@ CREATE TABLE pelanggan (
 
 ---
 
-# 17. DATA DICTIONARY
+## 4.3 Data Dictionary Awal
 
 | Tabel | Field | Tipe Data | Key | Keterangan |
 |---|---|---|---|---|
@@ -393,7 +430,7 @@ CREATE TABLE pelanggan (
 Data dictionary ini masih berupa contoh awal dan akan dilengkapi setelah ERD
 final disepakati.
 
-# 18. TRACEABILITY MATRIX
+## 3.8 Traceability Matrix
 
 | Requirement | Sumber | Entitas/Tabel |
 |---|---|---|
@@ -404,7 +441,7 @@ final disepakati.
 | FR-05 | Observasi pengadaan (dummy) | Pembelian, Detail_Pembelian |
 | FR-06 | Wawancara pemilik (dummy) | Pembayaran_Pemasok |
 
-# 19. TRIANGULASI
+## 2.5 Triangulasi
 
 **Observasi:** Pencatatan pesanan dan stok masih dilakukan secara manual.  
 **Wawancara:** Admin membutuhkan pencatatan terpusat dan laporan berkala.  
@@ -416,7 +453,7 @@ final disepakati.
 **Perbedaan:** Pencatatan aktual tidak selalu dilakukan saat transaksi.  
 **Dampak:** Informasi dapat terlambat dan tidak sinkron.
 
-# 20. DOKUMENTASI PENDUKUNG
+## 2.6 Dokumentasi Pendukung
 
 Daftar bukti dummy: foto kegiatan KP, foto administrasi, foto produksi, foto
 mesin, foto bahan, foto dokumen transaksi, foto nota/invoice, foto lingkungan
@@ -425,7 +462,7 @@ perusahaan, hasil wawancara, dan hasil observasi.
 Foto atau dokumen yang mengandung data sensitif akan disensor sebelum dimasukkan
 ke laporan.
 
-# 21. STRUKTUR LAPORAN UTS
+## 4.4 Pemetaan Struktur Laporan
 
 - **BAB I - Profil dan Analisis Masalah:** profil, struktur, proses bisnis, siklus, masalah, tujuan, dan ruang lingkup.
 - **BAB II - Pengumpulan Data:** metode, wawancara, observasi, studi dokumen, hasil, dan triangulasi.
@@ -436,9 +473,9 @@ ke laporan.
 
 ---
 
-# 22. LAMPIRAN PEMENUHAN FORMAT UTS
+## 3.9 Lampiran Pemenuhan Format UTS
 
-## 22.1 Lembar Observasi
+## Lampiran A - Lembar Observasi
 
 **Proses yang diamati:** Penerimaan dan penyelesaian pesanan cetak  
 **Lokasi:** [isi lokasi]  
@@ -458,7 +495,7 @@ ke laporan.
 | 9 | Pembayaran pelanggan dicatat | Ya | - | Dicatat oleh admin |
 | 10 | Laporan transaksi dibuat untuk owner | Belum dikonfirmasi | - | Validasi kepada Evi Indrawati |
 
-## 22.2 Daftar Dokumen dan Informasi yang Diperoleh
+## Lampiran B - Daftar Dokumen dan Informasi yang Diperoleh
 
 | Dokumen | Informasi yang Diperoleh | Elemen Data |
 |---|---|---|
@@ -468,7 +505,7 @@ ke laporan.
 | Catatan stok | Bahan masuk, bahan keluar, dan saldo | id_bahan, satuan, stok |
 | Catatan pembelian | Pemasok dan pembelian bahan | id_pemasok, tanggal, total |
 
-## 22.3 Triangulasi dan Verifikasi Kebutuhan
+## Lampiran C - Triangulasi dan Verifikasi Kebutuhan
 
 **Temuan konsisten:** Observasi menunjukkan pesanan dan stok dicatat oleh admin;
 wawancara Rina menjelaskan proses yang sama; nota dan catatan stok menjadi
@@ -482,7 +519,7 @@ Kesenjangan ini menghasilkan kebutuhan validasi dan riwayat perubahan stok.
 Indrawati sebagai owner. Revisi yang dilakukan adalah menambahkan laporan stok,
 status pesanan, dan hak akses owner. Tanggal konfirmasi: [isi tanggal].
 
-## 22.4 Kebutuhan Fungsional dan Non-Fungsional Terukur
+## Lampiran D - Kebutuhan Fungsional dan Non-Fungsional Terukur
 
 | ID | Deskripsi | Jenis | MoSCoW | Sumber |
 |---|---|---|---|---|
@@ -503,7 +540,7 @@ status pesanan, dan hak akses owner. Tanggal konfirmasi: [isi tanggal].
 Alasan prioritas Must: kebutuhan tersebut langsung mendukung pencatatan
 pendapatan, pengeluaran, stok, pengendalian akses, dan integritas transaksi.
 
-## 22.5 User Story dan Konflik Kebutuhan
+## Lampiran E - User Story dan Konflik Kebutuhan
 
 | ID | User Story | Kebutuhan |
 |---|---|---|
@@ -518,7 +555,7 @@ Indrawati membutuhkan validasi dan audit trail yang lengkap. Penyelesaiannya
 adalah menggunakan field wajib dan pilihan dropdown agar input tetap cepat,
 serta mencatat pengguna dan waktu setiap perubahan tanpa menghambat transaksi.
 
-## 22.6 Pemetaan Kebutuhan Data ke Dokumen Sumber
+## Lampiran F - Pemetaan Kebutuhan Data ke Dokumen Sumber
 
 | Dokumen Sumber | Field Dokumen | Elemen Data Sistem | Kebutuhan |
 |---|---|---|---|
@@ -529,7 +566,7 @@ serta mencatat pengguna dan waktu setiap perubahan tanpa menghambat transaksi.
 
 ---
 
-# 23. ERD DAN SKEMA RELASIONAL
+## 4.6 ERD dan Skema Relasional
 
 ```mermaid
 erDiagram
@@ -607,7 +644,7 @@ erDiagram
 menyelesaikan relasi many-to-many. `subtotal` adalah atribut derived dari
 `jumlah * harga_saat_transaksi`.
 
-## 23.1 Skema Relasional
+### 4.6.1 Skema Relasional
 
 - PELANGGAN(**id_pelanggan**, nama_pelanggan, alamat, nomor_telepon, email)
 - PRODUK(**id_produk**, nama_produk, jenis, ukuran, harga)
@@ -622,7 +659,7 @@ menyelesaikan relasi many-to-many. `subtotal` adalah atribut derived dari
 
 ---
 
-# 24. DDL DAN PENGUJIAN DATABASE
+## 4.7 DDL dan Pengujian Database
 
 ```sql
 CREATE TABLE pelanggan (
@@ -675,7 +712,7 @@ CREATE TABLE pembayaran_pemasok (
 );
 ```
 
-## 24.1 Contoh INSERT dan Pengujian Constraint
+## 4.7.1 Contoh INSERT dan Pengujian Constraint
 
 ```sql
 INSERT INTO pelanggan VALUES
@@ -714,7 +751,7 @@ INSERT INTO pembayaran_pemasok VALUES
 INSERT INTO bahan VALUES (6,'Bahan Salah','lembar',-1);
 ```
 
-## 24.2 Normalisasi dan Anomali
+## 4.7.2 Normalisasi dan Anomali
 
 Tabel awal menyimpan pelanggan, pesanan, produk, dan pembayaran dalam satu
 baris sehingga terdapat pengulangan data. Pada 1NF, setiap detail produk
@@ -725,7 +762,7 @@ transitif. Pemisahan ini mencegah insertion, update, dan delete anomaly.
 
 ---
 
-# 25. DATA DICTIONARY LENGKAP
+## 4.8 Data Dictionary Lengkap
 
 | Tabel | Primary Key | Foreign Key | Field Utama |
 |---|---|---|---|
@@ -742,7 +779,7 @@ transitif. Pemisahan ini mencegah insertion, update, dan delete anomaly.
 
 ---
 
-# 26. LOG PROGRES DAN RENCANA TAHAP 2
+# BAB V PROGRES DAN RENCANA TAHAP 2
 
 | Pertemuan | Kegiatan | Penanggung Jawab | Luaran |
 |---|---|---|---|
@@ -766,7 +803,11 @@ transitif. Pemisahan ini mencegah insertion, update, dan delete anomaly.
 Rencana teknologi: HTML/CSS/JavaScript atau framework yang disepakati
 kelompok, DBMS MySQL/MariaDB, dan draw.io atau Mermaid untuk pemodelan.
 
-## 26.1 Lembar Kontribusi Anggota
+## 5.1 Log Progres
+
+## 5.2 Rencana UAS / Tahap 2
+
+## 5.3 Lembar Kontribusi Anggota
 
 | No. | Nama | NIM | Peran | Kontribusi | Tanda Tangan |
 |---|---|---|---|---:|---|
@@ -776,7 +817,7 @@ kelompok, DBMS MySQL/MariaDB, dan draw.io atau Mermaid untuk pemodelan.
 | 4 | [isi nama] | [isi NIM] | Penyusunan laporan | [isi]% | [isi] |
 |  |  |  | **Total** | **100%** |  |
 
-## 26.2 Refleksi Kelompok
+## 5.4 Refleksi Kelompok
 
 Kendala utama Tahap 1 adalah data proses bisnis dan dokumen transaksi belum
 seluruhnya tersedia dalam format terstruktur. Kelompok mengatasinya dengan
@@ -784,7 +825,13 @@ membandingkan hasil wawancara, observasi, dan dokumen, kemudian menandai data
 yang masih perlu dikonfirmasi. Pada tahap berikutnya, kelompok akan memvalidasi
 ERD dan DDL kepada owner sebelum mengembangkan prototipe.
 
-## 26.3 Pernyataan Penggunaan AI
+## 5.5 Pernyataan Penggunaan AI
+
+# LAMPIRAN
+
+Lampiran A sampai G berisi notulen dan bukti wawancara/observasi, dokumen
+sumber, file `.sql`, lembar kontribusi anggota, serta pernyataan penggunaan AI
+yang dirujuk pada bagian-bagian terkait di atas.
 
 AI digunakan sebagai alat bantu penyusunan struktur dokumen, perapian bahasa,
 dan pembuatan contoh data dummy. Validasi data perusahaan, wawancara,
